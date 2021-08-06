@@ -3,7 +3,6 @@ import { Dispatch } from 'redux';
 
 import { ActionTypes } from '../store/action-types';
 import { Actions, sectionTypes } from '../store/actions/Todo';
-import { generateId } from '../utils';
 
 export const fetchTodos = () => {
   return (dispatch: Dispatch<Actions>) => {
@@ -28,17 +27,26 @@ export const fetchTodos = () => {
 export const addTodo = (
   sectionName: sectionTypes,
   taskName: string,
-  taskId: string
 ) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('');
-    dispatch({
-      type: ActionTypes.ADD_TASK,
-      sectionName,
-      taskName,
-      taskId,
-      isCompleted: false,
-    });
+    axios.post(
+      `https://todo-app-77b33-default-rtdb.firebaseio.com/todos/${sectionName}.json`,
+      {
+        isCompleted: false,
+        name: taskName,
+      }
+    )
+    .then((res) => {
+      console.log(res);
+      dispatch({
+        type: ActionTypes.ADD_TASK,
+        sectionName,
+        taskName,
+        taskId: res.data.name,
+        isCompleted: false,
+      })
+    })
+    .catch();
   };
 };
 
@@ -50,7 +58,7 @@ export const completeTodo = (
 ) => {
   axios.patch(
     `https://todo-app-77b33-default-rtdb.firebaseio.com/todos/${sectionName}/${taskId}/.json`,
-    { isCompleted: `${isCompleted}` }
+    { isCompleted }
   );
   return (dispatch: Dispatch<Actions>) => {
     dispatch({

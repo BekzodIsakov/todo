@@ -22,7 +22,6 @@ import Header from './components/header/Header';
 const App = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   let { idToken } = useSelector((state: RootState) => state.authReducer);
-  let { todos } = useSelector((state: RootState) => state.todoReducer);
 
   const dispatch = useDispatch();
 

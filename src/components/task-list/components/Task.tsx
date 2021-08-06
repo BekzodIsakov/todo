@@ -27,8 +27,7 @@ const TaskBase = styled(FlexContainerBase)`
 
 const Task: React.FC<PropTypes> = ({ taskObj, sectionName, taskId }) => {
   const { name, isCompleted } = taskObj;
-  const [isTaskCompleted, setIsTaskCompleted] = useState(isCompleted);
-
+  const [isTaskCompleted, setIsTaskCompleted] = useState<boolean>(isCompleted);
   const dispatch = useDispatch();
 
   const handleOnClick = () => {
@@ -39,9 +38,7 @@ const Task: React.FC<PropTypes> = ({ taskObj, sectionName, taskId }) => {
   return (
     <TaskBase
       as={'li'}
-      onClick={() => {
-        handleOnClick();
-      }}
+      onClick={handleOnClick}
     >
       <RadioButton isChecked={isTaskCompleted} />
       {name}

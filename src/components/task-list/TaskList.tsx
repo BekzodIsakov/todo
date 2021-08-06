@@ -19,7 +19,7 @@ const TaskList: React.FC<PropTypes> = ({ sectionName }) => {
   return (
     <TaskListBase as={'ul'} direction={'column'}>
       {Object.keys(tasks).map((key) => (
-        <Task taskObj={tasks[key]} key={key} sectionName={sectionName} taskId={key}/>
+        <Task taskObj={tasks[key]} key={key} sectionName={sectionName} taskId={key} />
       ))}
     </TaskListBase>
   );

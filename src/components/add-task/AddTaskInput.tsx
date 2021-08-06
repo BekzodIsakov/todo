@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
-import { generateId } from '../../utils';
 import { addTodo } from '../../services/todos';
 import { sectionTypes } from '../../store/actions/Todo';
 import {
@@ -54,8 +53,7 @@ const AddTaskInput: React.FC<PropTypes> = ({ sectionName }) => {
   const dispatch = useDispatch();
 
   const addNewTodo = () => {
-    const newId = generateId();
-    dispatch(addTodo(sectionName, inputValue, newId));
+    dispatch(addTodo(sectionName, inputValue));
   };
 
 
