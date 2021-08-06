@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 
 import { DashboardStyle } from './components/DashboardStyle';
 import NewTaskInput from '../../components/add-task/AddTaskInput';
-import FlexContainer from '../../components/FlexContainer';
 import TaskList from '../../components/task-list/TaskList';
-import { RootState } from '../../store/reducers';
 
 interface PropTypes {
   isExpanded: boolean;
@@ -56,7 +53,7 @@ const MyDay: React.FC<PropTypes> = () => {
         {date}
       </span>
       <NewTaskInput sectionName={'myDay'} />
-      <TaskList propertyName={'myDay'}/>
+      <TaskList sectionName={'myDay'}/>
     </MyDayBase>
   );
 };

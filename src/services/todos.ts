@@ -33,11 +33,32 @@ export const addTodo = (
   return (dispatch: Dispatch<Actions>) => {
     axios.post('');
     dispatch({
-      type: ActionTypes.ADD_TODO,
+      type: ActionTypes.ADD_TASK,
       sectionName,
       taskName,
       taskId,
       isCompleted: false,
+    });
+  };
+};
+
+export const completeTodo = (
+  sectionName: sectionTypes,
+  taskName: string,
+  taskId: string,
+  isCompleted: boolean
+) => {
+  axios.patch(
+    `https://todo-app-77b33-default-rtdb.firebaseio.com/todos/${sectionName}/${taskId}/.json`,
+    { isCompleted: `${isCompleted}` }
+  );
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionTypes.COMPLETE_TASK,
+      sectionName,
+      taskName,
+      taskId,
+      isCompleted,
     });
   };
 };

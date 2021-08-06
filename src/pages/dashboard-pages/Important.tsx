@@ -15,7 +15,7 @@ const Important = () => {
     <ImportantBase>
       <h3>Important</h3>
         <NewTaskInput sectionName={'important'} />
-        <TaskList propertyName={'important'} />
+        <TaskList sectionName={'important'} />
     </ImportantBase>
   );
 };

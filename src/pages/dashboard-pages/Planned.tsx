@@ -15,7 +15,7 @@ const Planned = () => {
     <PlannedBase>
       <h3>Planned</h3>
         <NewTaskInput sectionName={'planned'} />
-        <TaskList propertyName={'planned'} />
+        <TaskList sectionName={'planned'} />
     </PlannedBase>
   );
 };

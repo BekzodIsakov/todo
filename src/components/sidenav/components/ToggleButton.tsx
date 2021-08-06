@@ -7,7 +7,7 @@ interface PropTypes {
   setIsExpanded: (isExpanded: boolean) => void;
 }
 
-const ResizeButtonBase = styled.button`
+const ToggleButtonBase = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,12 +23,12 @@ const ResizeButtonBase = styled.button`
   }
 `;
 
-const ResizeButton: React.FC<PropTypes> = ({ isExpanded, setIsExpanded }) => {
+const ToggleButton: React.FC<PropTypes> = ({ isExpanded, setIsExpanded }) => {
   return (
-    <ResizeButtonBase onClick={() => setIsExpanded(!isExpanded)}>
+    <ToggleButtonBase onClick={() => setIsExpanded(!isExpanded)}>
       <ButtonIcon isExpanded={isExpanded} />
-    </ResizeButtonBase>
+    </ToggleButtonBase>
   );
 };
 
-export default ResizeButton;
+export default ToggleButton;

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 
 import { GetTaskQuantity } from '../../utils';
 import FlexContainer from '../FlexContainer';
-import ResizeButton from './components/ResizeButton';
+import ToggleButton from './components/ToggleButton';
 import SideNavLink, { LinkText } from './components/SideNavLink';
 import { IconSVG } from '../../components/IconSVG';
 import { TaskQuantity } from './components/SideNavLink';
@@ -33,7 +33,7 @@ const SideNav: React.FC<PropTypes> = ({ isExpanded, setIsExpanded }) => {
 
   return (
     <SideNavBase isExpanded={isExpanded}>
-      <ResizeButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+      <ToggleButton isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
       <FlexContainer direction={'column'}>
         <SideNavLink isActive={pathname === '/myDay'} to={'/myDay'}>
           <IconSVG iconName={'sun-icon'} />

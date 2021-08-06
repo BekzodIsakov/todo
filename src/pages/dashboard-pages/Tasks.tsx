@@ -15,7 +15,7 @@ const Tasks = () => {
     <TasksBase>
       <h3>Tasks</h3>
         <NewTaskInput sectionName={'tasks'} />
-        <TaskList propertyName={'tasks'} />
+        <TaskList sectionName={'tasks'} />
     </TasksBase>
   );
 };

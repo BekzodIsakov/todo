@@ -4,22 +4,22 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '../../store/reducers';
 import { FlexContainerBase } from '../FlexContainer';
-import ListItem from './components/ListItem';
+import Task from './components/Task';
 
 interface PropTypes {
-  propertyName: 'myDay' | 'planned' | 'important' | 'tasks';
+  sectionName: 'myDay' | 'planned' | 'important' | 'tasks';
 }
 
 const TaskListBase = styled(FlexContainerBase)``;
 
-const TaskList: React.FC<PropTypes> = ({ propertyName }) => {
+const TaskList: React.FC<PropTypes> = ({ sectionName }) => {
   const { todos } = useSelector((state: RootState) => state.todoReducer);
-  const tasks = todos[propertyName];
+  const tasks = todos[sectionName];
 
   return (
     <TaskListBase as={'ul'} direction={'column'}>
       {Object.keys(tasks).map((key) => (
-        <ListItem taskObj={tasks[key]} key={key} />
+        <Task taskObj={tasks[key]} key={key} sectionName={sectionName} taskId={key}/>
       ))}
     </TaskListBase>
   );

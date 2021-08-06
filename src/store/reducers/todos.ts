@@ -42,7 +42,7 @@ export default (state: stateType = initialState, action: Actions) => {
         isLoading: false,
         error: action.error,
       };
-    case ActionTypes.ADD_TODO:
+    case ActionTypes.ADD_TASK:
       const { todos } = state;
       const section = todos[action.sectionName];
       const newTaskObj = {
@@ -59,6 +59,20 @@ export default (state: stateType = initialState, action: Actions) => {
       return {
         ...state,
         todos: updatedTodos,
+      };
+    case ActionTypes.COMPLETE_TASK:
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          [action.sectionName]: {
+            ...state.todos[action.sectionName],
+            [action.taskId]: {
+              isCompleted: action.isCompleted,
+              name: action.taskName,
+            },
+          },
+        },
       };
     default:
       return state;
